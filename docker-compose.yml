@@ -1,0 +1,15 @@
+# Launch DB container
+db:
+  image: million12/mariadb:latest
+  ports:
+    - 3306
+  environment:
+    MARIADB_PASS: password
+
+# Launch Hippo
+app:
+  image: million12/hippocms
+  ports:
+    - '8080:8080'
+  links:
+    - db:db
